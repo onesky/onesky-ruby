@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'onesky/ruby/version'
+require 'onesky/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "onesky-ruby"
-  spec.version       = Onesky::Ruby::VERSION
+  spec.version       = Onesky::VERSION
   spec.authors       = ["Victor Lam"]
   spec.email         = ["victorebox@yahoo.com.hk"]
   spec.summary       = %q{TODO: Write a short summary. Required.}
