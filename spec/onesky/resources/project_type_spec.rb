@@ -6,7 +6,7 @@ describe 'Project Type' do
 
   describe 'list_project_type' do
     it 'should list all available project type' do
-      stub_request(:get, 'https://staging-platform.api.onesky.io/1/project-type')
+      stub_request(:get, 'https://staging-platform.api.onesky.io/1/project-types')
         .to_return(body: {})
       response = client.list_project_type
       expect(response).to be_an_instance_of(Hash)
