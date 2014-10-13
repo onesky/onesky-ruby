@@ -1,11 +1,13 @@
 require 'onesky/resources/locale'
 require 'onesky/resources/project_type'
+require 'onesky/resources/project_group'
 require 'onesky/helpers/request'
 
 module Onesky
   class Client
     include Resources::Locale
     include Resources::ProjectType
+    include Resources::ProjectGroup
     include Helpers::Request
 
     def self.test_print
