@@ -1,5 +1,10 @@
+require 'onesky/resources/locale'
+require 'onesky/helpers/request'
+
 module Onesky
   class Client
+    include Resources::Locale
+    include Helpers::Request
 
     def self.test_print
       p 'This is Onesky::Client.test_print()'
@@ -7,10 +12,9 @@ module Onesky
 
     attr_accessor :api_key, :api_secret, :project_id
 
-    def initialize(key, secret, project_id = nil)
+    def initialize(key, secret)
       @api_key = key
       @api_secret = secret
-      @project_id = project_id
     end
 
   end
