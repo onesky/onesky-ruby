@@ -17,4 +17,13 @@ describe 'Project::Base' do
     end
   end
 
+  describe 'remove' do
+    it 'should delete a project' do
+      stub_request(:delete, full_path_with_auth_hash("/projects/#{project_id}", api_key, api_secret))
+        .to_return(status: 200)
+      response = project.remove
+      expect(response.code).to eq(200)
+    end
+  end
+
 end

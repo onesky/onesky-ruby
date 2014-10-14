@@ -3,7 +3,11 @@ module Resources
     module Base
 
       def show
-        get("#{project_path}")
+        get(project_path)
+      end
+
+      def remove
+        delete(project_path)
       end
 
     end
