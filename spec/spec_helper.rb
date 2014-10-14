@@ -14,5 +14,5 @@ def auth_query_string(api_key, api_secret)
 end
 
 def full_path_with_auth_hash(path, api_key, api_secret)
-  "https://staging-platform.api.onesky.io/1#{path}#{auth_query_string(api_key, api_secret)}"
+  "#{Helpers::Request::ENDPOINT}/#{Helpers::Request::VERSION}#{path}#{auth_query_string(api_key, api_secret)}"
 end
