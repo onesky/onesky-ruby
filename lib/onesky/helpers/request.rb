@@ -14,6 +14,11 @@ module Helpers
       RestClient.get uri, auth_hash
     end
 
+    def post(path, body_hash)
+      uri = uri_prefix + path
+      RestClient.post uri, body_hash.to_json, content_type: :json, params: auth_hash
+    end
+
     private
 
     def auth_hash
