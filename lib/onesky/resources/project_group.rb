@@ -9,5 +9,9 @@ module Resources
       get("/project-groups/#{project_group_id}")
     end
 
+    def create_project_group(params)
+      post('/project-groups', params)
+    end
+
   end
 end
