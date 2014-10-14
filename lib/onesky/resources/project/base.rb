@@ -14,7 +14,7 @@ module Resources
         delete(project_path)
       end
 
-      def languages
+      def list_language
         get("#{project_path}/languages")
       end
 

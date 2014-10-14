@@ -37,11 +37,11 @@ describe 'Project::Base' do
     end
   end
 
-  describe 'languages' do
+  describe 'list_language' do
     it 'should list languages of project' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/languages", api_key, api_secret))
         .to_return(body: {})
-      response = project.languages
+      response = project.list_language
       expect(response).to be_an_instance_of(Hash)
     end
   end
