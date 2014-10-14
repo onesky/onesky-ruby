@@ -29,7 +29,7 @@ describe 'Project Group' do
 
     it 'should create a project group' do
       stub_request(:post, full_path_with_auth_hash('/project-groups', api_key, api_secret))
-        .with(body: params.to_json)
+        .with(body: params.to_json, headers: {'Content_Type' => 'application/json'})
         .to_return(body: {})
       response = client.create_project_group(params)
       expect(response).to be_an_instance_of(Hash)
