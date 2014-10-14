@@ -25,10 +25,13 @@ describe 'Project Group' do
   end
 
   describe 'create_project_group' do
+    let(:params) {{name: 'New Project Group'}}
+
     it 'should create a project group' do
       stub_request(:post, full_path_with_auth_hash('/project-groups', api_key, api_secret))
+        .with(body: params.to_json)
         .to_return(body: {})
-      response = client.create_project_group({name: 'New Project Group'})
+      response = client.create_project_group(params)
       expect(response).to be_an_instance_of(Hash)
     end
   end
