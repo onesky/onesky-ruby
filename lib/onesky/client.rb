@@ -1,3 +1,5 @@
+require 'digest'
+
 require 'onesky/resources/locale'
 require 'onesky/resources/project_type'
 require 'onesky/resources/project_group'
@@ -18,6 +20,16 @@ module Onesky
     def initialize(key, secret)
       @api_key = key
       @api_secret = secret
+    end
+
+    def auth_hash
+      now = Time.now.to_i
+
+      {
+        api_key: @api_key,
+        timestamp: now,
+        dev_hash: Digest::MD5.hexdigest(now.to_s + @api_secret)
+      }
     end
 
   end
