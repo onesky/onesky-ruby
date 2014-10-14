@@ -8,7 +8,7 @@ describe 'Project Group' do
 
   describe 'list_project_group' do
     it 'should list all available project group' do
-      stub_request(:get, 'https://staging-platform.api.onesky.io/1/project-groups')
+      stub_request(:get, full_path_with_auth_hash('/project-groups', api_key, api_secret))
         .to_return(body: {})
       response = client.list_project_group
       expect(response).to be_an_instance_of(Hash)
@@ -16,10 +16,12 @@ describe 'Project Group' do
   end
 
   describe 'show_project_group' do
+    let(:project_group_id) {1}
+
     it 'should show a project group information' do
-      stub_request(:get, 'https://staging-platform.api.onesky.io/1/project-groups/1')
+      stub_request(:get, full_path_with_auth_hash("/project-groups/#{project_group_id}", api_key, api_secret))
         .to_return(body: {})
-      response = client.show_project_group(1)
+      response = client.show_project_group(project_group_id)
       expect(response).to be_an_instance_of(Hash)
     end
   end

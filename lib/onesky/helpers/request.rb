@@ -11,7 +11,7 @@ module Helpers
 
     def get(path)
       uri = uri_prefix + path
-      RestClient.get uri, auth_hash
+      RestClient.get uri, params: auth_hash
     end
 
     def post(path, body_hash)
