@@ -1,6 +1,7 @@
 require 'onesky/resources/locale'
 require 'onesky/resources/project_type'
 require 'onesky/resources/project_group'
+require 'onesky/resources/project'
 require 'onesky/helpers/request'
 
 module Onesky
@@ -8,6 +9,7 @@ module Onesky
     include Resources::Locale
     include Resources::ProjectType
     include Resources::ProjectGroup
+    include Resources::Project
     include Helpers::Request
 
     def self.test_print
