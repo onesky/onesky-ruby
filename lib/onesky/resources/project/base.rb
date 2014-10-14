@@ -14,6 +14,10 @@ module Resources
         delete(project_path)
       end
 
+      def languages
+        get("#{project_path}/languages")
+      end
+
     end
   end
 end
