@@ -30,4 +30,12 @@ describe 'Project' do
     end
   end
 
+  describe 'project' do
+    let(:project_id) {1}
+
+    it 'get project object' do
+      expect(client.project(project_id)).to be_an_instance_of(Onesky::Project)
+    end
+  end
+
 end

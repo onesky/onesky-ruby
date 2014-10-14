@@ -3,6 +3,7 @@ require 'onesky/resources/project_type'
 require 'onesky/resources/project_group'
 require 'onesky/resources/project'
 require 'onesky/helpers/request'
+require 'onesky/project'
 
 module Onesky
   class Client
