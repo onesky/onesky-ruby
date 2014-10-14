@@ -17,6 +17,17 @@ describe 'Project::Base' do
     end
   end
 
+  describe 'update' do
+    let(:params) {{name: 'New name', description: 'New project description'}}
+
+    it 'should update project information' do
+      stub_request(:put, full_path_with_auth_hash("/projects/#{project_id}", api_key, api_secret))
+        .to_return(status: 200)
+      response = project.update(params)
+      expect(response.code).to eq(200)
+    end
+  end
+
   describe 'remove' do
     it 'should delete a project' do
       stub_request(:delete, full_path_with_auth_hash("/projects/#{project_id}", api_key, api_secret))

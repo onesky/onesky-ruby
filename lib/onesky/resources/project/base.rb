@@ -6,6 +6,10 @@ module Resources
         get(project_path)
       end
 
+      def update(params)
+        put(project_path, params)
+      end
+
       def remove
         delete(project_path)
       end
