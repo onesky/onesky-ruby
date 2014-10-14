@@ -49,4 +49,15 @@ describe 'Project Group' do
     end
   end
 
+  describe 'list_project_group_languages' do
+    let(:project_group_id) {1}
+
+    it 'should list languages activated of a project group' do
+      stub_request(:get, full_path_with_auth_hash("/project-groups/#{project_group_id}/languages", api_key, api_secret))
+        .to_return(body: {})
+      response = client.list_project_group_languages(project_group_id)
+      expect(response).to be_an_instance_of(Hash)
+    end
+  end
+
 end
