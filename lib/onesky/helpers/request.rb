@@ -19,6 +19,11 @@ module Helpers
       RestClient.post uri, body_hash.to_json, content_type: :json, params: auth_hash
     end
 
+    def delete(path)
+      uri = uri_prefix + path
+      RestClient.delete uri, params: auth_hash
+    end
+
     private
 
     def auth_hash

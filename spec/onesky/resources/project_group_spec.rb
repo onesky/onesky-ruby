@@ -36,4 +36,15 @@ describe 'Project Group' do
     end
   end
 
+  describe 'delete_project_group' do
+    let(:project_group_id) {1}
+
+    it 'should delete a project group' do
+      stub_request(:delete, full_path_with_auth_hash("/project-groups/#{project_group_id}", api_key, api_secret))
+        .to_return(body: {})
+      response = client.delete_project_group(project_group_id)
+      expect(response).to be_an_instance_of(Hash)
+    end
+  end
+
 end

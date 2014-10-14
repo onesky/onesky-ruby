@@ -13,5 +13,9 @@ module Resources
       post('/project-groups', params)
     end
 
+    def delete_project_group(project_group_id)
+      delete("/project-groups/#{project_group_id}")
+    end
+
   end
 end
