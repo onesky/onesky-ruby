@@ -14,6 +14,10 @@ module Resources
         get("#{project_path}/translations/app-descriptions", params)
       end
 
+      def get_translation_status(params)
+        get("#{project_path}/translations/status", params)
+      end
+
     end
   end
 end

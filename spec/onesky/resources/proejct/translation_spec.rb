@@ -44,4 +44,16 @@ describe 'Project::Translation' do
     end
   end
 
+  describe 'get_translation_status' do
+    let(:params) {{file_name: 'en.yml', locale: 'ja'}}
+    let(:params_as_query_string) {'&file_name=en.yml&locale=ja'}
+
+    it 'should show translation status' do
+      stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/translations/status", api_key, api_secret) + params_as_query_string)
+        .to_return(body: {})
+      response = project.get_translation_status(params)
+      expect(response).to be_an_instance_of(Hash)
+    end
+  end
+
 end
