@@ -1,10 +1,12 @@
 require 'onesky/resources/project/base'
+require 'onesky/resources/project/file'
 require 'onesky/helpers/request'
 
 module Onesky
   class Project
 
     include Resources::Project::Base
+    include Resources::Project::File
     include Helpers::Request
 
     attr_accessor :client, :project_id
