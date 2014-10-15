@@ -15,6 +15,10 @@ module Resources
         post_multipart("#{project_path}/files", params)
       end
 
+      def delete_file(params)
+        delete("#{project_path}/files", params)
+      end
+
     end
   end
 end

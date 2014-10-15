@@ -28,9 +28,9 @@ module Helpers
       RestClient.put uri, body_hash.to_json, content_type: :json, params: auth_hash
     end
 
-    def delete(path)
+    def delete(path, params = {})
       uri = uri_prefix + path
-      RestClient.delete uri, params: auth_hash
+      RestClient.delete uri, content_type: :json, params: auth_hash.merge(params)
     end
 
     private

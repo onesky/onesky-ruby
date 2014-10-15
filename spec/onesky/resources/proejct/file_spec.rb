@@ -28,4 +28,16 @@ describe 'Project::File' do
     end
   end
 
+  describe 'delete_file' do
+    let(:params) {{file_name: 'en.yml'}}
+    let(:params_as_query_string) {'&file_name=en.yml'}
+
+    it 'should delete file from project' do
+      stub_request(:delete, full_path_with_auth_hash("/projects/#{project_id}/files", api_key, api_secret) + params_as_query_string)
+        .to_return(body: {})
+      response = project.delete_file(params)
+      expect(response).to be_an_instance_of(Hash)
+    end
+  end
+
 end
