@@ -1,6 +1,7 @@
 require 'onesky/resources/project/base'
 require 'onesky/resources/project/file'
 require 'onesky/resources/project/translation'
+require 'onesky/resources/project/import_task'
 require 'onesky/helpers/request'
 
 module Onesky
@@ -9,6 +10,7 @@ module Onesky
     include Resources::Project::Base
     include Resources::Project::File
     include Resources::Project::Translation
+    include Resources::Project::ImportTask
     include Helpers::Request
 
     attr_accessor :client, :project_id
