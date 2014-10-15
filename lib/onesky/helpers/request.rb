@@ -3,14 +3,14 @@ require 'rest-client'
 module Helpers
   module Request
 
-    ENDPOINT = 'https://staging-platform.api.onesky.io'
+    ENDPOINT = 'http://staging-platform.api.onesky.io'
     VERSION = 1
 
     protected
 
-    def get(path)
+    def get(path, params = {})
       uri = uri_prefix + path
-      RestClient.get uri, params: auth_hash
+      RestClient.get uri, params: auth_hash.merge(params)
     end
 
     def post(path, body_hash)
@@ -30,7 +30,7 @@ module Helpers
 
     def delete(path, params = {})
       uri = uri_prefix + path
-      RestClient.delete uri, content_type: :json, params: auth_hash.merge(params)
+      RestClient.delete uri, params: auth_hash.merge(params)
     end
 
     private
