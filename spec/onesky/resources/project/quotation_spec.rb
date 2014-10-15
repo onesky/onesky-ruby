@@ -9,8 +9,8 @@ describe 'Project::Quotation' do
   let(:project) {client.project(project_id)}
 
   describe 'show_quotation' do
-    let(:params) {{files: ['en.yml', 'en2.yml']}}
-    let(:params_as_query_string) {'&files[]=en.yml&files[]=en2.yml'}
+    let(:params) {{files: ['en.yml', 'en2.yml'], to_locale: 'ja'}}
+    let(:params_as_query_string) {'&files[]=en.yml&files[]=en2.yml&to_locale=ja'}
 
     it 'should show quotation details' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/quotations", api_key, api_secret) + params_as_query_string)
