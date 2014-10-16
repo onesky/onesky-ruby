@@ -1,5 +1,5 @@
 require 'onesky/resources/project/base'
-require 'onesky/resources/project/file'
+require 'onesky/resources/project/file_mgt'
 require 'onesky/resources/project/translation'
 require 'onesky/resources/project/import_task'
 require 'onesky/resources/project/quotation'
@@ -10,7 +10,7 @@ module Onesky
   class Project
 
     include Resources::Project::Base
-    include Resources::Project::File
+    include Resources::Project::FileMgt
     include Resources::Project::Translation
     include Resources::Project::ImportTask
     include Resources::Project::Quotation

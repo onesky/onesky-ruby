@@ -1,15 +1,15 @@
 module Resources
   module Project
-    module File
+    module FileMgt
 
       def list_file
         get("#{project_path}/files")
       end
 
       def upload_file(params)
-        file = params['file']
-        if file.is_a? String
-          params['file'] = File.new(file, 'rt')
+        file = params[:file]
+        if file.is_a?(String) && File.exists?(file)
+          params[:file] = File.new(file, 'rt')
         end
 
         post_multipart("#{project_path}/files", params)
