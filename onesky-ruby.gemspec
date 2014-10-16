@@ -8,9 +8,9 @@ Gem::Specification.new do |spec|
   spec.version       = Onesky::VERSION
   spec.authors       = ["Victor Lam"]
   spec.email         = ["victorebox@yahoo.com.hk"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
-  spec.homepage      = ""
+  spec.summary       = "To interact with OneSky Platform API"
+  spec.description   = "Ruby wrapper for OneSky API"
+  spec.homepage      = "http://github.com/onesky/onesky-ruby"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
