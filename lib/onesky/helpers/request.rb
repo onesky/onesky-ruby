@@ -3,7 +3,7 @@ require 'rest-client'
 module Helpers
   module Request
 
-    ENDPOINT = 'http://staging-platform.api.onesky.io'
+    ENDPOINT = 'https://platform.api.onesky.io'
     VERSION = 1
 
     protected
