@@ -1,6 +1,6 @@
-# Onesky::Ruby
+# OneSky - Ruby client
 
-TODO: Write a gem description
+Ruby client for [OneSky](http://www.oneskyapp.com) [Platform API](/onesky/api-documentation-platform)
 
 ## Installation
 
@@ -18,7 +18,45 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```Ruby
+require 'onesky'
+
+# Create client
+client = Onesky::Client.new('<api_key>, '<api_secret>')
+
+# list available locales
+resp = JSON.parse(client.list_locale)
+p resp['data']
+
+# list project groups
+resp = JSON.parse(client.list_project_group)
+p resp['data']
+
+# show project group details
+project_group_id = 1
+resp = JSON.parse(client.show_project_group project_group_id)
+p resp['data']
+
+# list projects
+resp = JSON.parse(client.list_project project_group_id)
+p resp['data']
+
+### Work with Project
+
+# show project details
+project_id = 3
+project = client.porject(project_id)
+resp = JSON.parse(project.show)
+p resp['data']
+
+# upload file
+resp = project.upload_file(file: 'path/to/string/file', file_format: 'RUBY_YAML')
+resp.code # => 201
+
+# download translation
+resp = project.export_translation(source_file_name: 'en.yml', locale: 'ja')
+File.open('path/to/target/file', 'w') { |file| file.write(resp)}
+```
 
 ## Contributing
 
