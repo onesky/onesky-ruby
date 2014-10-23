@@ -18,13 +18,17 @@ describe 'Project::File' do
   end
 
   describe 'upload_file' do
-    let(:params) {{file: 'fixture/en.yml', file_format: 'RUBY_YAML'}}
+    let(:params) {{file: 'spec/fixture/en.yml', file_format: 'RUBY_YAML'}}
 
     it 'should upload file to project' do
       stub_request(:post, full_path_with_auth_hash("/projects/#{project_id}/files", api_key, api_secret))
         .to_return(body: {})
       response = project.upload_file(params)
       expect(response).to be_an_instance_of(Hash)
+    end
+
+    it 'should raise error when file does not exist' do
+      expect {project.upload_file(file: 'spec/fixture/no_file.yml')}.to raise_error(IOError, 'File does not exist')
     end
   end
 
