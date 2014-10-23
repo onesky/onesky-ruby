@@ -22,7 +22,7 @@ Or install it yourself as:
 require 'onesky'
 
 # Create client
-client = Onesky::Client.new('<api_key>, '<api_secret>')
+client = Onesky::Client.new('<api_key>', '<api_secret>')
 
 # list available locales
 resp = JSON.parse(client.list_locale)
