@@ -1,5 +1,7 @@
 # OneSky - Ruby client
 
+[![Build Status](https://travis-ci.org/onesky/onesky-ruby.svg)](https://travis-ci.org/onesky/onesky-ruby)
+
 Ruby client for [OneSky](http://www.oneskyapp.com) [Platform API](/onesky/api-documentation-platform)
 
 ## Installation
