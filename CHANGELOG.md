@@ -13,3 +13,8 @@
   * import task
   * order
   * quotation
+
+### 1.0.0 - 31-DEC-2014
+
+* Add custom header for OneSky
+* Set as stable version
