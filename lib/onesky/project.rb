@@ -22,6 +22,8 @@ module Onesky
     def initialize(client, id)
       @client = client
       @project_id = id
+
+      @plugin_code = client.plugin_code
     end
 
     private
