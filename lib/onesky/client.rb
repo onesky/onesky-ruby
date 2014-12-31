@@ -15,11 +15,14 @@ module Onesky
     include Resources::Project
     include Helpers::Request
 
-    attr_accessor :api_key, :api_secret, :project_id
+    attr_accessor :api_key, :api_secret, :project_id, :plugin_code
 
     def initialize(key, secret)
       @api_key = key
       @api_secret = secret
+
+      # Plugin code for custom header
+      @plugin_code = 'ruby-wrapper'
     end
 
     def auth_hash
