@@ -10,35 +10,57 @@ module Helpers
 
     def get(path, params = {})
       uri = uri_prefix + path
-      RestClient.get(uri, params: auth_hash.merge(params)) do |resp, req, result|
+      params = {
+        content_type: :json,
+        params: auth_hash.merge(params),
+      }.merge(custom_header)
+
+      RestClient.get(uri, params) do |resp, req, result|
         handle_error(resp)
       end
     end
 
     def post(path, body_hash)
       uri = uri_prefix + path
-      RestClient.post(uri, body_hash.to_json, content_type: :json, params: auth_hash) do |resp, req, result|
+      params = {
+        content_type: :json,
+        params: auth_hash,
+      }.merge(custom_header)
+
+      RestClient.post(uri, body_hash.to_json, params) do |resp, req, result|
         handle_error(resp)
       end
     end
 
     def post_multipart(path, body_hash)
       uri = uri_prefix + path
-      RestClient.post(uri, body_hash.merge({multipart: true}), params: auth_hash) do |resp, req, result|
+      params = {params: auth_hash}.merge(custom_header)
+
+      RestClient.post(uri, body_hash.merge({multipart: true}), params) do |resp, req, result|
         handle_error(resp)
       end
     end
 
     def put(path, body_hash)
       uri = uri_prefix + path
-      RestClient.put(uri, body_hash.to_json, content_type: :json, params: auth_hash) do |resp, req, result|
+      params = {
+        content_type: :json,
+        params: auth_hash,
+      }.merge(custom_header)
+
+      RestClient.put(uri, body_hash.to_json, params) do |resp, req, result|
         handle_error(resp)
       end
     end
 
     def delete(path, params = {})
       uri = uri_prefix + path
-      RestClient.delete(uri, params: auth_hash.merge(params)) do |resp, req, result|
+      params = {
+        content_type: :json,
+        params: auth_hash.merge(params)
+      }.merge(custom_header)
+
+      RestClient.delete(uri, params) do |resp, req, result|
         handle_error(resp)
       end
     end
@@ -76,6 +98,10 @@ module Helpers
         return response_body['meta']['message']
       end
       ''
+    end
+
+    def custom_header
+      {'Onesky-Plugin' => @plugin_code}
     end
 
   end
