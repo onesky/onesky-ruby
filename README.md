@@ -47,7 +47,7 @@ p resp['data']
 
 # show project details
 project_id = 3
-project = client.porject(project_id)
+project = client.project(project_id)
 resp = JSON.parse(project.show)
 p resp['data']
 
