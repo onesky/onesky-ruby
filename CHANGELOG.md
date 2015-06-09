@@ -18,3 +18,7 @@
 
 * Add custom header for OneSky
 * Set as stable version
+
+### 1.0.1 - 9-JUN-2015
+
+* Update rest-client version
