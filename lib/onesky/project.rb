@@ -26,18 +26,18 @@ module Onesky
       @plugin_code = client.plugin_code
     end
 
+    private
+
+    def project_path
+      "/projects/#{@project_id}"
+    end
+
     def auth_hash
       @client.auth_hash
     end
 
     def debug?
       @client.debug?
-    end
-
-    private
-
-    def project_path
-      "/projects/#{@project_id}"
     end
   end
 end
