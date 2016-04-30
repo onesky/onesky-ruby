@@ -26,15 +26,12 @@ module Onesky
       @plugin_code = client.plugin_code
     end
 
+    delegate :auth_hash, :debug?, to: :client
+
     private
 
     def project_path
       "/projects/#{@project_id}"
     end
-
-    def auth_hash
-      @client.auth_hash
-    end
-
   end
 end

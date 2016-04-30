@@ -16,7 +16,7 @@ module Helpers
       }.merge(custom_header)
 
       RestClient.get(uri, params) do |resp, req, result|
-        handle_error(resp)
+        handle_error(resp, action: :get, uri: uri)
       end
     end
 
@@ -28,7 +28,7 @@ module Helpers
       }.merge(custom_header)
 
       RestClient.post(uri, body_hash.to_json, params) do |resp, req, result|
-        handle_error(resp)
+        handle_error(resp, action: :post, uri: uri)
       end
     end
 
@@ -37,7 +37,7 @@ module Helpers
       params = {params: auth_hash}.merge(custom_header)
 
       RestClient.post(uri, body_hash.merge({multipart: true}), params) do |resp, req, result|
-        handle_error(resp)
+        handle_error(resp, action: :post, uri: uri)
       end
     end
 
@@ -49,7 +49,7 @@ module Helpers
       }.merge(custom_header)
 
       RestClient.put(uri, body_hash.to_json, params) do |resp, req, result|
-        handle_error(resp)
+        handle_error(resp, action: :put, uri: uri)
       end
     end
 
@@ -61,7 +61,7 @@ module Helpers
       }.merge(custom_header)
 
       RestClient.delete(uri, params) do |resp, req, result|
-        handle_error(resp)
+        handle_error(resp, action: :delete, uri: uri)
       end
     end
 
@@ -71,22 +71,24 @@ module Helpers
       "#{ENDPOINT}/#{VERSION}"
     end
 
-    def handle_error(response)
+    def handle_error(response, options = {})
       return response if response.code.to_i < 400 # return if not error
+
+      info = " (#{options[:action].upcase} #{options[:uri]})" if debug?
 
       case response.code.to_i
       when 400
-        raise Onesky::Errors::BadRequestError.new(response), "400 Bad Request - #{extract_message(response)}"
+        raise Onesky::Errors::BadRequestError.new(response), "400 Bad Request - #{extract_message(response)} #{info}"
       when 401
-        raise Onesky::Errors::UnauthorizedError.new(response), "401 Unauthorized - #{extract_message(response)}"
+        raise Onesky::Errors::UnauthorizedError.new(response), "401 Unauthorized - #{extract_message(response)} #{info}"
       when 403
-        raise Onesky::Errors::ForbiddenError.new(response), "403 Forbidden - #{extract_message(response)}"
+        raise Onesky::Errors::ForbiddenError.new(response), "403 Forbidden - #{extract_message(response)} #{info}"
       when 404
-        raise Onesky::Errors::NotFoundError.new(response), "404 Not Found - #{extract_message(response)}"
+        raise Onesky::Errors::NotFoundError.new(response), "404 Not Found - #{extract_message(response)} #{info}"
       when 405
-        raise Onesky::Errors::MethodNotAllowedError.new(response), "405 Method Not Allowed - #{extract_message(response)}"
+        raise Onesky::Errors::MethodNotAllowedError.new(response), "405 Method Not Allowed - #{extract_message(response)} #{info}"
       when 500
-        raise Onesky::Errors::InternalServerError.new(response), "500 Internal Server Error - Please contact OneSky at support@oneskyapp.com"
+        raise Onesky::Errors::InternalServerError.new(response), "500 Internal Server Error - Please contact OneSky at support@oneskyapp.com #{info}"
       else
         raise Onesky::Errors::OneskyError.new(response), "#{response.code} Error"
       end
