@@ -26,7 +26,13 @@ module Onesky
       @plugin_code = client.plugin_code
     end
 
-    delegate :auth_hash, :debug?, to: :client
+    def auth_hash
+      @client.auth_hash
+    end
+
+    def debug?
+      @client.debug?
+    end
 
     private
 
