@@ -11,9 +11,9 @@ describe 'Project::Order' do
   describe 'list_order' do
     it 'should list orders in project' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/orders", api_key, api_secret))
-        .to_return(status: 200, body: {})
+        .to_return(status: 200, body: "{}")
       response = project.list_order
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
@@ -22,9 +22,9 @@ describe 'Project::Order' do
 
     it 'should show an order details' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/orders/#{order_id}", api_key, api_secret))
-        .to_return(status: 200, body: {})
+        .to_return(status: 200, body: "{}")
       response = project.show_order(order_id)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
@@ -36,9 +36,9 @@ describe 'Project::Order' do
     it 'should create an order' do
       stub_request(:post, full_path_with_auth_hash("/projects/#{project_id}/orders", api_key, api_secret))
         .with(body: params.to_json, headers: {'Content_Type' => 'application/json'})
-        .to_return(status: 200, body: {})
+        .to_return(status: 200, body: "{}")
       response = project.create_order(params)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 

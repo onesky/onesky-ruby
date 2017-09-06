@@ -9,9 +9,9 @@ describe 'Project Type' do
   describe 'list_project_type' do
     it 'should list all available project type' do
       stub_request(:get, full_path_with_auth_hash('/project-types', api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = client.list_project_type
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 

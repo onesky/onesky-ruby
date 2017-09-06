@@ -11,9 +11,9 @@ describe 'Project::Base' do
   describe 'show' do
     it 'should show project information' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}", api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.show
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
@@ -40,9 +40,9 @@ describe 'Project::Base' do
   describe 'list_language' do
     it 'should list languages of project' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/languages", api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.list_language
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
