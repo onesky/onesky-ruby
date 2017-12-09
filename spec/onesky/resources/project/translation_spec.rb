@@ -50,9 +50,9 @@ describe 'Project::Translation' do
 
     it 'should show translation status' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/translations/status", api_key, api_secret) + params_as_query_string)
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.get_translation_status(params)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 

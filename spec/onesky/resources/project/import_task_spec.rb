@@ -11,9 +11,9 @@ describe 'Project::ImportTask' do
   describe 'list_import_task' do
     it 'should list import tasks of the project' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/import-tasks", api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.list_import_task
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
@@ -22,9 +22,9 @@ describe 'Project::ImportTask' do
 
     it 'should show an import task details' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/import-tasks/#{import_task_id}", api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.show_import_task(import_task_id)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 

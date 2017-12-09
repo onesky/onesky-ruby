@@ -11,9 +11,9 @@ describe 'Project::File' do
   describe 'list_file' do
     it 'should list files in project' do
       stub_request(:get, full_path_with_auth_hash("/projects/#{project_id}/files", api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.list_file
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
@@ -22,9 +22,9 @@ describe 'Project::File' do
 
     it 'should upload file to project' do
       stub_request(:post, full_path_with_auth_hash("/projects/#{project_id}/files", api_key, api_secret))
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.upload_file(params)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
 
     it 'should raise error when file does not exist' do
@@ -38,9 +38,9 @@ describe 'Project::File' do
 
     it 'should delete file from project' do
       stub_request(:delete, full_path_with_auth_hash("/projects/#{project_id}/files", api_key, api_secret) + params_as_query_string)
-        .to_return(body: {})
+        .to_return(body: "{}")
       response = project.delete_file(params)
-      expect(response).to be_an_instance_of(Hash)
+      expect(response).to be_an_instance_of(RestClient::Response)
     end
   end
 
