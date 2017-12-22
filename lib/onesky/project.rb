@@ -36,5 +36,8 @@ module Onesky
       @client.auth_hash
     end
 
+    def debug?
+      @client.debug?
+    end
   end
 end
