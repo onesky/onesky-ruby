@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "http://github.com/onesky/onesky-ruby"
   spec.license       = "MIT"
 
-  spec.required_ruby_version = '>= 2.5.0'
+  spec.required_ruby_version = '>= 3.0'
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
@@ -22,8 +22,8 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'rest-client', '~> 2.0'
 
-  spec.add_development_dependency "bundler", "~> 2.2.10"
-  spec.add_development_dependency "rake", "~> 12.3.3"
-  spec.add_development_dependency "rspec", "~> 3.1.0"
+  spec.add_development_dependency "bundler", "~> 2.2"
+  spec.add_development_dependency "rake", "~> 12.3"
+  spec.add_development_dependency "rspec", "~> 3.5.0"
   spec.add_development_dependency "webmock", "~> 3.0"
 end
