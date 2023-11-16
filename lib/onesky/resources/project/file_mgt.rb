@@ -9,7 +9,7 @@ module Resources
       def upload_file(params)
         file = params[:file]
         if file.is_a?(String)
-          raise IOError, 'File does not exist' unless File.exists?(file)
+          raise IOError, 'File does not exist' unless File.exist?(file)
           params[:file] = File.new(file, 'rt')
         end
 
